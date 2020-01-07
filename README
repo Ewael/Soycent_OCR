@@ -1,0 +1,61 @@
+                      ______    ______   _______  
+                     /      \  /      \ |       \ 
+                    |  $$$$$$\|  $$$$$$\| $$$$$$$\
+                    | $$  | $$| $$   \$$| $$__| $$
+                    | $$  | $$| $$      | $$    $$
+                    | $$  | $$| $$   __ | $$$$$$$\
+                    | $$__/ $$| $$__/  \| $$  | $$
+                     \$$    $$ \$$    $$| $$  | $$
+                      \$$$$$$   \$$$$$$  \$$   \$$
+
+                              BY SOYCENT
+
+
+README
+
+  OCR is a tool for converting images to text using neural networks.
+  Currently, the tool is capable of loading an image in its system, 
+  segmentate the lines and characters and pass it to the neural network. 
+  It is also possible to train this neural network.
+
+USAGE
+
+      ./main <path to image>
+         Converts the specified image to a text. Result is printed
+         on stdout. <path to image> must be a valid path to an image
+         containing text. The recommended image format is JPEG.
+
+    Training:
+
+      ./main --train <training set folder>
+         Trains the neural network using the provided training sets and
+         saves the result. <training set folder> must be a valid path to
+         a directory containing valid training images set. The given set
+         is available in the trainset folder.
+
+         Example: ./main --train trainset
+
+         A valid training image contains the following caracters in order:
+
+            abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.
+
+         It is recommended to use a high letter spacing to avoid any issue
+         during the segmentation.         
+
+    To use the GTK interface, launch with:
+
+      ./main_gtk
+
+COMPILING
+  
+  Download the OCR source code, then use the following:
+
+      make
+
+  To compile the GTK interface, use the following:
+
+      make ui
+
+CURRENT STATUS
+
+  The OCR tool project reached the end. It still contains bugs.
