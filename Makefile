@@ -1,31 +1,41 @@
-CC=gcc
+# Makefile OCR
 
-CPPFLAGS=`pkg-config --cflags sdl` -MMD
+CC = gcc
+CFLAGS = -W -Wall -Wextra -Werror -std=c99 -O3
+CPPFLAGS =
+LDFLAGS = -lSDL_image -lm -ldl -MMD
 
-CFLAGS= `pkg-config --cflags gtk+-3.0` -Wall -Wextra -Werror -std=c99 -O3
+# libraries
+LM = -lm
+GTK = `pkg-config --cflags --libs gtk+-3.0`
+SDL = `pkg-config --cflags --libs sdl`
 
-LDFLAGS=
-LDLIBS=`pkg-config --libs gtk+-3.0` `pkg-config --libs sdl` -lSDL_image -lm -ldl
+SRC = struct/*.c \
+      net/*.c \
+      segmentation/*.c \
+      imageload/*.c \
+      ocr.c
 
-SRC = Matrix/Matrix.c list/list.c net/neuralnet.c savenn/savenn.c segmentation/xycut.c segmentation/seg_train.c imageload/imageload.c imageload/pixel_operations.c net/ocr_net.c ocr.c segmentation/character_sizes.c
+SRC_UI = $(SRC) ui/*.c
 
-SRC_UI = ui/main.c ui/train.c
+all: cli ui
 
-OBJ= $(SRC:.c=.o)
-DEP= $(SRC:.c=.d)
+cli: $(SRC) main.c
+	$(CC) -o main main.c \
+		$(SRC) \
+		$(CFLAGS) $(CPPFLAGS) $(LDFLAGS) \
+		$(SDL)
 
-OBJ_UI= $(SRC_UI:.c=.o)
-DEP_UI= $(SRC_UI:.c=.d)
+ui: $(SRC_UI) main_gtk.c
+	$(CC) -o main_gtk main_gtk.c \
+		$(SRC_UI) \
+		$(CFLAGS) $(CPPFLAGS) $(LDFLAGS) \
+		$(GTK) $(SDL)
 
-all: main
-
-main: main.o $(OBJ)
-
-ui: main_gtk
-
-main_gtk: main_gtk.o $(OBJ) $(OBJ_UI)
+.PHONY: clean
 
 clean:
-	${RM} ${OBJ} ${DEP} ${OBJ_UI} ${DEP_UI} main main.d main.o main_gtk main_gtk.o main_gtk.d
+	$(RM) main main.d
+	$(RM) main_gtk main_gtk.d
 
 # END

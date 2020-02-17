@@ -3,11 +3,14 @@
 #include <time.h>
 #include <math.h>
 
-#include "ocr_net.h"
-#include "neuralnet.h"
-#include "../Matrix/Matrix.h"
+#include "../struct/list.h"
+#include "../struct/Matrix.h"
 #include "../segmentation/seg_train.h"
-#include "../savenn/savenn.h"
+#include "../net/savenn.h"
+
+#include "neuralnet.h"
+
+#include "ocr_net.h"
 
 /* --------------------------- *
  * ------ Miscellaneous ------ *

@@ -1,9 +1,12 @@
 #include <stdlib.h>
 #include <err.h>
-#include "../Matrix/Matrix.h"
-#include "xycut.h"
-#include "../list/list.h"
+
+#include "../struct/Matrix.h"
+#include "../struct/list.h"
+
 #include "character_sizes.h"
+
+#include "xycut.h"
 
 int *sumlines(Matrix *matrix) {
         int *sums = malloc(sizeof(int) * matrix->lines);

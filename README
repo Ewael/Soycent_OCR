@@ -1,5 +1,5 @@
-                      ______    ______   _______  
-                     /      \  /      \ |       \ 
+                      ______    ______   _______
+                     /      \  /      \ |       \
                     |  $$$$$$\|  $$$$$$\| $$$$$$$\
                     | $$  | $$| $$   \$$| $$__| $$
                     | $$  | $$| $$      | $$    $$
@@ -14,8 +14,8 @@
 README
 
   OCR is a tool for converting images to text using neural networks.
-  Currently, the tool is capable of loading an image in its system, 
-  segmentate the lines and characters and pass it to the neural network. 
+  Currently, the tool is capable of loading an image in its system,
+  segmentate the lines and characters and pass it to the neural network.
   It is also possible to train this neural network.
 
 USAGE
@@ -40,21 +40,25 @@ USAGE
             abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.
 
          It is recommended to use a high letter spacing to avoid any issue
-         during the segmentation.         
+         during the segmentation.
 
     To use the GTK interface, launch with:
 
       ./main_gtk
 
 COMPILING
-  
-  Download the OCR source code, then use the following:
-
-      make
 
   To compile the GTK interface, use the following:
 
       make ui
+
+  To compile the CLI version, use the following:
+
+      make cli
+
+  To compile both, just use:
+
+      make
 
 CURRENT STATUS
 

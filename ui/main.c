@@ -11,7 +11,7 @@ UiApp create_ui(GtkBuilder *builder) {
         /* VAR SETTING */
 
         .builder = builder,
-    
+
         .main_window = GTK_WINDOW(gtk_builder_get_object(builder, "org.soycent.ocr")),
 
         .about_button = GTK_BUTTON(gtk_builder_get_object(builder, "about_button")),
@@ -21,7 +21,7 @@ UiApp create_ui(GtkBuilder *builder) {
         .save_button = GTK_BUTTON(gtk_builder_get_object(builder, "save_button")),
 
         .train_button = GTK_BUTTON(gtk_builder_get_object(builder, "train_net_button")),
-        
+
         .start_page = GTK_BOX(gtk_builder_get_object(builder, "start_page")),
 
         .main_box = GTK_BOX(gtk_builder_get_object(builder, "main_box")),
@@ -42,7 +42,7 @@ UiApp create_ui(GtkBuilder *builder) {
             .donestep = GTK_BOX(gtk_builder_get_object(builder, "train_done_step_box")),
         },
 
-        /* END OF VAR SETTING */ 
+        /* END OF VAR SETTING */
     };
 
     return uiapp;
@@ -64,12 +64,12 @@ void on_open_btn_pressed(GtkButton *button, gpointer user_data) {
     if (res == GTK_RESPONSE_ACCEPT) {
         char *filename;
         filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(file_dialog));
-        
+
         while(gtk_events_pending())
             gtk_main_iteration();
-        
+
         gtk_widget_destroy(GTK_WIDGET(file_dialog));
-        
+
         char *text_result = image_to_text(filename);
 
         g_free(filename);
@@ -80,7 +80,7 @@ void on_open_btn_pressed(GtkButton *button, gpointer user_data) {
             g_print("error\n");
             return;
         }
-        
+
         gtk_text_buffer_set_text(uiapp->main_text_buffer, text_result, strlen(text_result));
         g_free(text_result);
         gtk_stack_set_visible_child(uiapp->main_stack, GTK_WIDGET(uiapp->main_box));
@@ -95,7 +95,7 @@ void on_open_btn_pressed(GtkButton *button, gpointer user_data) {
 int save_text_buffer(char *s, char *path) {
     FILE *fptr;
     fptr = fopen(path, "w");
-    
+
     if (!fptr)
         return 1;
 
@@ -118,7 +118,7 @@ void on_save_btn_pressed(GtkButton *button, gpointer user_data) {
                 "_Save",
                 GTK_RESPONSE_ACCEPT,
                 NULL));
-    
+
     gtk_file_chooser_set_do_overwrite_confirmation(
             GTK_FILE_CHOOSER(file_dialog), TRUE);
 

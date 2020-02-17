@@ -1,9 +1,6 @@
 #ifndef NEURAL_NET_H
 #define NEURAL_NET_H
 
-#include <stdlib.h>
-#include "../Matrix/Matrix.h"
-
 typedef struct //neuralnet
 {
     size_t nb_layers;

@@ -5,15 +5,20 @@
 #include <errno.h>
 #include <err.h>
 
-#include "list/list.h"
-#include "Matrix/Matrix.h"
+#include "struct/list.h"
+#include "struct/Matrix.h"
+
 #include "imageload/imageload.h"
+
 #include "segmentation/character_sizes.h"
 #include "segmentation/xycut.h"
 #include "segmentation/seg_train.h"
+
 #include "net/neuralnet.h"
 #include "net/ocr_net.h"
-#include "savenn/savenn.h"
+#include "net/savenn.h"
+
+#include "ocr.h"
 
 int load_start_training(char *path)
 {

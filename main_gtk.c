@@ -20,7 +20,7 @@ int main() {
     }
 
     UiApp uiapp = create_ui(builder);
-    
+
     gtk_widget_set_sensitive(GTK_WIDGET(uiapp.save_button), FALSE);
 
     /* START OF SIGNAL CONNECT */

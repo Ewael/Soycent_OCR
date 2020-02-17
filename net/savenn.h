@@ -1,6 +1,5 @@
 #ifndef SAVELIB_H
 #define SAVELIB_H
-#include "../Matrix/Matrix.h"
 
 /*
  *  Saves a list of matrices in file

@@ -1,7 +1,5 @@
 #ifndef XYCUT_H
 #define XYCUT_H
-#include "../Matrix/Matrix.h"
-#include "../list/list.h"
 
 struct txtelement {
     Matrix *matrix;

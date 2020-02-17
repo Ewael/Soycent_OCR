@@ -1,5 +1,8 @@
 #include <stdlib.h>
-#include "../Matrix/Matrix.h"
+
+#include "../struct/Matrix.h"
+
+#include "character_sizes.h"
 
 Matrix *square_matrix(Matrix *m) {
     int side = m->lines > m->columns ? m->lines : m->columns;

@@ -1,9 +1,13 @@
 #include <err.h>
+
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+
+#include "../struct/Matrix.h"
+
 #include "pixel_operations.h"
+
 #include "imageload.h"
-#include "../Matrix/Matrix.h"
 
 //SDL utils fonctions, by the ASM
 void init_sdl()
@@ -72,7 +76,7 @@ Uint32 estimate_text_size(Uint8* grayTab, Uint16* noiseTab,
     if (count == 0)
         return 0;
     average = average/count;
-    
+
     //Count each black pixels surrounded by at least 2 white pixels,
     //relative to the average brightness we just found
     count = 0;
@@ -203,9 +207,9 @@ void average_pixels(Uint8* grayTab, Uint32* averageTab,
 
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            averageTab[j/(width/nbGrid) + (i/(height/nbGrid))*nbGrid] += 
+            averageTab[j/(width/nbGrid) + (i/(height/nbGrid))*nbGrid] +=
                 grayTab[j + i * width];
-            averageIndexes[j/(width/nbGrid) + (i/(height/nbGrid))*nbGrid]++; 
+            averageIndexes[j/(width/nbGrid) + (i/(height/nbGrid))*nbGrid]++;
         }
     }
 
@@ -227,9 +231,9 @@ void average_pixels_filtered(Uint8* grayTab, Uint8* filter, Uint32* averageTab,
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             if (filter[j + i * width] < 122) {
-                averageTab[j/(width/nbGrid) + (i/(height/nbGrid))*nbGrid] += 
+                averageTab[j/(width/nbGrid) + (i/(height/nbGrid))*nbGrid] +=
                     grayTab[j + i * width];
-                averageIndexes[j/(width/nbGrid) + (i/(height/nbGrid))*nbGrid]++; 
+                averageIndexes[j/(width/nbGrid) + (i/(height/nbGrid))*nbGrid]++;
             }
         }
     }

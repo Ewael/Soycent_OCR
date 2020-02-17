@@ -1,7 +1,12 @@
 #include <stdlib.h>
 #include <err.h>
+
+#include "../struct/list.h"
+#include "../struct/Matrix.h"
+
 #include "xycut.h"
-#include "../list/list.h"
+
+#include "seg_train.h"
 
 size_t list_nbchars(list *l) {
     list *cur = l->next;
