@@ -13,9 +13,9 @@ typedef struct //Matrix
  * ------ Matrix initialisation ------ *
  * ----------------------------------- */
 
-/* 
- * Returns a matrix col*lines 
- * with 0 if !(random) and 
+/*
+ * Returns a matrix col*lines
+ * with 0 if !(random) and
  * random double values following a gaussian
  * distribution else
  */
@@ -37,7 +37,7 @@ Matrix *onebyone_matrix(double a);
  */
 Matrix *transpose(Matrix *m);
 
-/* 
+/*
  * Returns a copy of m
  */
 Matrix *copy_matrix(Matrix *m);
@@ -53,12 +53,12 @@ Matrix *mult_matrix(double a, Matrix *m);
  * ------ Operations between matrices ------ *
  * ----------------------------------------- */
 
-/* 
+/*
  * Returns m+n matrix
  */
 Matrix *add_matrix(Matrix *m, Matrix *n);
 
-/* 
+/*
  * Returns m - n matrix
  */
 Matrix *sub_matrix(Matrix *m, Matrix *n);
@@ -191,12 +191,12 @@ void free_matrices_range(Matrix **m, size_t start_index, size_t end_index);
  */
 void print_letter(Matrix *m);
 
-/* 
+/*
  * Prints a matrix m
  */
 void print_matrix(Matrix *m);
 
-/* 
+/*
  * Prints a list m of matrices of same length
  */
 void print_matrices(Matrix **m, size_t length);

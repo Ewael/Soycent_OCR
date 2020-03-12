@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+
 #include "Matrix.h"
 
 /* ----------------------------------- *
@@ -19,9 +20,9 @@ static double gauss(void)
   return z;
 }
 
-/* 
- * Returns a matrix col*lines 
- * with 0 if !(random) and 
+/*
+ * Returns a matrix col*lines
+ * with 0 if !(random) and
  * random double values following a gaussian
  * distribution else
  */
@@ -40,7 +41,7 @@ Matrix *init_matrix(int col, int lines, int random)
 		}
 		return m;
 	}
-	
+
 	//srand must only be called once, has been moved to main
 	for(int i=0; i < m->length; i++) //random double values
 	{
@@ -83,7 +84,7 @@ Matrix *transpose(Matrix *m)
 	return res;
 }
 
-/* 
+/*
  * Returns a copy of m
  */
 Matrix *copy_matrix(Matrix *m)
@@ -116,7 +117,7 @@ Matrix *mult_matrix(double a, Matrix *m)
  * ------ Operations between matrices ------ *
  * ----------------------------------------- */
 
-/* 
+/*
  * Returns m + n matrix
  */
 Matrix *add_matrix(Matrix *m, Matrix *n)
@@ -135,10 +136,10 @@ Matrix *add_matrix(Matrix *m, Matrix *n)
 		res->list[i] = m->list[i] + n->list[i];
 	}
 	return res;
-	
+
 }
 
-/* 
+/*
  * Returns m - n matrix
  */
 Matrix *sub_matrix(Matrix *m, Matrix *n)
@@ -169,7 +170,7 @@ Matrix *multiply_matrix(Matrix *m, Matrix *n)
 		printf("\nTrying to multiply matrices with wrong dimensions\n");
 		return m;
 	}
-	
+
 	Matrix *res = init_matrix(n->columns, m->lines, 0); // Result
 	double sum = 0;
     int c = 0; //c is the index of each element placed in res->list
@@ -187,7 +188,7 @@ Matrix *multiply_matrix(Matrix *m, Matrix *n)
 				b = n->list[y + z*n->columns];
 				sum += a * b;
 			}
-			
+
 			res->list[c++] = sum;
 		}
 	}
@@ -258,7 +259,7 @@ Matrix **add_listofmatrices(Matrix **m, Matrix **n, size_t length)
 /*
  * Returns list of a - b where
  * a,b are the matrices in m,n
- */	
+ */
 Matrix **sub_listofmatrices(Matrix **m, Matrix **n, size_t length)
 {
 	Matrix **res = malloc((length) * sizeof(Matrix*)); //result
@@ -456,7 +457,7 @@ void print_letter(Matrix *m)
     }
 }
 
-/* 
+/*
  * Prints a matrix m
  */
 void print_matrix(Matrix *m)
@@ -471,7 +472,7 @@ void print_matrix(Matrix *m)
 	}
 }
 
-/* 
+/*
  * Prints a list m of 'length' (how many) matrices
  */
 void print_matrices(Matrix **m, size_t length)
