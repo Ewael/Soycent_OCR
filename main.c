@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     printf("\nReport bugs to: nicolas.froger@epita.fr\n");
     printf("This software is made by the SOYCENT team.\n");
 
-    if(argc == 2 && (strcmp(argv[1],"--help") == 0 
+    if(argc == 2 && (strcmp(argv[1],"--help") == 0
                 || strcmp(argv[1], "-h") == 0)) {
         return 0;
     }

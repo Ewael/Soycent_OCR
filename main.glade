@@ -274,7 +274,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="label" translatable="yes">This menu will guide you through the steps needed to train 
+                    <property name="label" translatable="yes">This menu will guide you through the steps needed to train
 the neural network behind the optical character
 recognition.</property>
                     <property name="justify">center</property>

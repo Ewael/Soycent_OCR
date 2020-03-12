@@ -30,7 +30,7 @@ int load_start_training(char *path)
         printf("Could not open data set folder.\n");
         return 1;
     }
-    
+
     //we count the number of files
     size_t filecount = 0;
     while ((ep = readdir(dp))) { // one = is not a mistake
@@ -63,7 +63,7 @@ int load_start_training(char *path)
             free(filename);
         }
     }
-    
+
     list **segmented_images = malloc(sizeof(list) * filecount);
     if (!segmented_images)
         errx(1, "not enough memory");
@@ -82,10 +82,10 @@ int load_start_training(char *path)
     }
 
     Matrix **outputs = prepare_results(26);
-    
+
     int layers[8] = {676, 300, 200, 200, 150, 100, 100, 26};
     neuralnet *nn = init_neural_net(8, layers);
-    
+
     // load neural net
     i = 0;
     printf("Loading neural network...");
@@ -128,7 +128,7 @@ int start_training(char *path)
         printf("Could not open data set folder.\n");
         return 1;
     }
-    
+
     //we count the number of files
     size_t filecount = 0;
     while ((ep = readdir(dp))) { // one = is not a mistake
@@ -161,7 +161,7 @@ int start_training(char *path)
             free(filename);
         }
     }
-    
+
     list **segmented_images = malloc(sizeof(list) * filecount);
     if (!segmented_images)
         errx(1, "not enough memory");
@@ -186,7 +186,7 @@ int start_training(char *path)
 
 char *image_to_text(char *path) {
     printf("====== OCR by Soycent ======\n\n");
-    
+
     // load image
     printf("Loading image...");
     Matrix *image = get_bw_denoised_image_fast(path);
@@ -208,7 +208,7 @@ char *image_to_text(char *path) {
     //int layers[10] = {676, 200, 200, 150, 100, 100, 100, 100, 100, 54};
     int layers[8] = {676, 300, 200, 200, 150, 100, 100, 26};
     neuralnet *nn = init_neural_net(8, layers);
-    
+
     // load neural net
     size_t i = 0;
     printf("Loading neural network...");
@@ -240,7 +240,7 @@ char *image_to_text(char *path) {
 
     size_t length = list_len(chars);
     char *res = calloc(length + 1, sizeof(char));
-    
+
     printf("Character recognition...");
     // loop sending each matrix to neural net
     i = 0;
@@ -269,7 +269,7 @@ char *image_to_text(char *path) {
     }
 
     res[i] = '\0';
-    
+
     printf("done\n");
 
     free_matrices(nn->biases, nn->nb_layers-1);
@@ -277,7 +277,7 @@ char *image_to_text(char *path) {
     free_matrices_range(nn->neurons_z, 1, nn->nb_layers);
     free_matrices_range(nn->neurons_a, 1, nn->nb_layers);
     free(nn);
-    
+
     if (nline) {
         free(nline);
         nline = NULL;
@@ -287,7 +287,7 @@ char *image_to_text(char *path) {
         nspace = NULL;
     }
     free(chars);
-    
+
     // return the result
 
     return res;
