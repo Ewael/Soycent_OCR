@@ -28,28 +28,28 @@ static double gauss(void)
  */
 Matrix *init_matrix(int col, int lines, int random)
 {
-	Matrix *m = malloc(sizeof(Matrix) + sizeof(double) * col * lines);
-	m->columns = col;
-	m->lines = lines;
-	m->length = col*lines;
+        Matrix *m = malloc(sizeof(Matrix) + sizeof(double) * col * lines);
+        m->columns = col;
+        m->lines = lines;
+        m->length = col*lines;
 
-	if (!random) //matrix of 0
-	{
-		for(int i=0; i < m->length; i++)
-		{
-			m->list[i] = 0;
-		}
-		return m;
-	}
+        if (!random) //matrix of 0
+        {
+                for(int i=0; i < m->length; i++)
+                {
+                        m->list[i] = 0;
+                }
+                return m;
+        }
 
-	//srand must only be called once, has been moved to main
-	for(int i=0; i < m->length; i++) //random double values
-	{
-		m->list[i] = gauss()*0.5;
-		// m->list[i] = (double) rand() / RAND_MAX * (5-(-5)) + (-5);
-	}
+        //srand must only be called once, has been moved to main
+        for(int i=0; i < m->length; i++) //random double values
+        {
+                m->list[i] = gauss()*0.5;
+                // m->list[i] = (double) rand() / RAND_MAX * (5-(-5)) + (-5);
+        }
 
-	return m;
+        return m;
 }
 
 /*
@@ -462,14 +462,14 @@ void print_letter(Matrix *m)
  */
 void print_matrix(Matrix *m)
 {
-	for(int i=0; i < m->length; i++)
-	{
-		printf("%f ",m->list[i]);
-    	if ((i+1) % m->columns == 0) //end of a line
-		{
-			printf("\n");
-		}
-	}
+        for(int i=0; i < m->length; i++)
+        {
+                printf("%f ",m->list[i]);
+                if ((i+1) % m->columns == 0) //end of a line
+                {
+                        printf("\n");
+                }
+        }
 }
 
 /*
@@ -477,11 +477,11 @@ void print_matrix(Matrix *m)
  */
 void print_matrices(Matrix **m, size_t length)
 {
-	printf("----------------\n");
-	for (size_t i=0; i < length; i++)
-	{
-		print_matrix(m[i]);
-		printf("    -     \n");
-	}
-	printf("----------------\n");
+        printf("----------------\n");
+        for (size_t i=0; i < length; i++)
+        {
+                print_matrix(m[i]);
+                printf("    -     \n");
+        }
+        printf("----------------\n");
 }
