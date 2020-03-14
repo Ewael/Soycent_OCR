@@ -26,12 +26,12 @@ static double gauss(void)
  * random double values following a gaussian
  * distribution else
  */
-Matrix *init_matrix(int col, int lines, int random)
+Matrix *init_matrix(int cols, int lines, int random)
 {
-        Matrix *m = malloc(sizeof(Matrix) + sizeof(double) * col * lines);
-        m->columns = col;
+        Matrix *m = malloc(sizeof(Matrix) + sizeof(double) * cols * lines);
+        m->columns = cols;
         m->lines = lines;
-        m->length = col*lines;
+        m->length = cols*lines;
 
         if (!random) //matrix of 0
         {
